@@ -12,9 +12,12 @@ import {ScaleLine} from 'ol/control.js';
 import MousePosition from 'ol/control/MousePosition.js';
 import {createStringXY} from 'ol/coordinate.js';
 import {defaults as defaultControls} from 'ol/control.js';
-
+import Control from 'ol/control/Control.js';
 
 const map = ref(null)
+const myControl = new Control({
+  
+});
 const initMap =() =>{
   // 地图实例
   map.value = new Map({
@@ -31,7 +34,7 @@ const initMap =() =>{
     view: new View({                       // 地图视图
       projection: "EPSG:4326",             // 坐标系，有EPSG:4326和EPSG:3857
       center: [120, 23.488793],     // 台灣坐标
-                                           // 地图缩放最小级别
+      // 地图缩放最小级别
       zoom: 8                             // 地图缩放级别（打开页面时默认级别）
     }),
     controls: []
