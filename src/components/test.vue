@@ -15,7 +15,7 @@ import {defaults as defaultControls} from 'ol/control.js';
 
 
 const map = ref(null)
-function initMap () {
+const initMap =() =>{
   // 地图实例
   map.value = new Map({
     
@@ -30,11 +30,20 @@ function initMap () {
     ],
     view: new View({                       // 地图视图
       projection: "EPSG:4326",             // 坐标系，有EPSG:4326和EPSG:3857
-      center: [120.846642, 23.488793],     // 台灣坐标
+      center: [120, 23.488793],     // 台灣坐标
                                            // 地图缩放最小级别
       zoom: 8                             // 地图缩放级别（打开页面时默认级别）
-    })
-  })
+    }),
+    controls: []
+  }),
+  map.addControl(
+    new ScaleLine({
+        // {'degrees'} {'imperial'} {'nautical'} {'metric'} {'us'}
+        // 比例尺有提供幾種單位可以調整，範例如下
+        // units: 'us'
+        bar: true,
+        steps: 4
+    }))
 
 }
 
@@ -62,5 +71,8 @@ html, body {
   /* height: 600px; */
   width: 1000px;
   height: 600px;
+}
+.ol-zoom-in{
+  width: 10px;
 }
 </style>
